@@ -6,10 +6,20 @@ This is a flask application with tensorflow 2 object detection API deployed. The
 * You can the download the required model from [tensorflow model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)and specify the saved_model path in the client.py file
 * You also have to specify the url, image_path, output_dir(the dir where you want your images to be saved), labelmap path in the client.py file.
 
+## Run
+* first run 
+'''
+python main.py
+'''
+to get the app running and then to hit the endpoint with required arguments, run
+'''
+python client.py
+'''
+
 ## Output
 The output consists of 
 * A json file with the format {"class": "score"}
 * image with detection boxes overlay gets saved in the directory specified in the client.py file
 
-![](https://github.com/wingedrasengan927/weather-app-with-nodejs/blob/master/public/images/demo.gif)
-![](https://github.com/wingedrasengan927/weather-app-with-nodejs/blob/master/public/images/demo.gif)
+![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/outputs/girl_image_output.jpg)
+![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/images/Screenshot.png)
