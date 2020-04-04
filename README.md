@@ -17,3 +17,7 @@ The output consists of
 
 ![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/outputs/girl_image_output.jpg)
 ![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/images/Screenshot.png)
+
+## References
+* https://github.com/tensorflow/models/tree/master/research/object_detection
+* https://gist.github.com/kylehounslow/767fb72fde2ebdd010a0bf4242371594
