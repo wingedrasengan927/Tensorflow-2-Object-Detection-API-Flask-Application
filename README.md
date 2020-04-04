@@ -11,3 +11,5 @@ The output consists of
 * A json file with the format {"class": "score"}
 * image with detection boxes overlay gets saved in the directory specified in the client.py file
 
+![](https://github.com/wingedrasengan927/weather-app-with-nodejs/blob/master/public/images/demo.gif)
+![](https://github.com/wingedrasengan927/weather-app-with-nodejs/blob/master/public/images/demo.gif)
