@@ -69,7 +69,7 @@ def run_inference_for_single_image(model, image):
 
     return output_dict
 
-def show_inference(model, image_np, save_path, category_index, vis_thresh, max_boxes_to_draw):
+def show_inference(model, image_np, category_index, vis_thresh, max_boxes_to_draw):
     # the array based representation of the image will be used later in order to prepare the
     # result image with boxes and labels on it.
 
@@ -88,9 +88,7 @@ def show_inference(model, image_np, save_path, category_index, vis_thresh, max_b
         max_boxes_to_draw = max_boxes_to_draw,
         line_thickness=8)
 
-    cv2.imwrite(save_path, image_np)
-
-    return output_dict
+    return output_dict, image_np
 
 def parse_output_dict(output_dict, category_index):
     "parse output dict in the format {'class':'score'}"

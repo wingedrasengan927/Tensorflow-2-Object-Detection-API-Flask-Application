@@ -1,9 +1,10 @@
 from flask import Flask, request, Response
-import jsonpickle
 import numpy as np
 import cv2
+import json
 
 from utilities import load_model, load_label_map, show_inference, parse_output_dict
+from custom_np_encoder import NumpyArrayEncoder
 
 model_path = "models/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03/saved_model"
 labels_path = "data/mscoco_label_map.pbtxt"
@@ -18,20 +19,20 @@ category_index = load_label_map(labels_path)
 app = Flask(__name__)
 
 # route http posts to this method
-@app.route('/object_detection/<string:save_dir>/<string:image_name>', methods=['POST'])
-def infer(save_dir, image_name):
+@app.route('/object_detection', methods=['POST'])
+def infer():
 
     # convert image data to uint8
     nparr = np.frombuffer(request.data, np.uint8)
 
-    save_path = save_dir + "/" + image_name
-
     # decode image
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    # do inderence on the image and get detections
-    output_dict= show_inference(detection_model, img, save_path, category_index, vis_threshold, max_boxes)
+    # do inderence on the image and get detections and image data with overlay
+    output_dict, image_np = show_inference(detection_model, img, category_index, vis_threshold, max_boxes)
     parsed_output_dict = parse_output_dict(output_dict, category_index)
+
+    parsed_output_dict.update({"image data": image_np})
 
     # add the size of the image in the response
     parsed_output_dict.update({"image size": "size={}x{}".format(img.shape[1], img.shape[0])})
@@ -39,10 +40,10 @@ def infer(save_dir, image_name):
     # build a response dict to send back to client
     response = parsed_output_dict
     
-    # encode response using jsonpickle
-    response_pickled = jsonpickle.encode(response)
+    # encode response
+    response_encoded = json.dumps(response, cls=NumpyArrayEncoder)
 
-    return Response(response=response_pickled, status=200, mimetype="application/json")
+    return Response(response=response_encoded, status=200, mimetype="application/json")
 
 
 # start flask app

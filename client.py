@@ -1,7 +1,7 @@
-from __future__ import print_function
 import numpy as np
 import requests
 import json
+import cv2
 
 address = 'http://localhost:5000'
 url = address + '/object_detection'
@@ -12,13 +12,9 @@ save_dir = "outputs/"
 content_type = 'image/jpeg'
 headers = {'content-type': content_type}
 
-def post_image(img_path, URL, save_dir):
+def post_image(img_path, URL):
     """ post image and return the response """
-    # get image name from image path
-    img_name = img_path.split("/")[-1].split(".")[0]
-    save_path = save_dir + img_name + '_output.jpg'
-
-    URL = URL + "/" + save_path
+ 
     img = open(img_path, 'rb').read()
     response = requests.post(URL, data=img, headers=headers)
     return response
@@ -26,5 +22,12 @@ def post_image(img_path, URL, save_dir):
 def parse_response(response):
     return json.loads(response.text)
 
-response = post_image(img_path, url, save_dir)
-print(parse_response(response))
+def write_image(save_dir, parsed_response):
+    img_array = np.asarray(parsed_response["image data"])
+    cv2.imwrite(save_dir + "server_output.jpg", img_array)
+    return img_array
+
+response = post_image(img_path, url)
+parsed_response = parse_response(response)
+print(parsed_response.keys())
+write_image(save_dir, parsed_response)
