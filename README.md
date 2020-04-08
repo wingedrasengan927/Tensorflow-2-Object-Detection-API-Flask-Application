@@ -16,7 +16,6 @@ The output consists of
 * image with detection boxes overlay gets saved in the directory specified in the client.py file
 
 ![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/outputs/girl_image_output.jpg)
-![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/images/Screenshot.png)
 
 ## References
 * https://github.com/tensorflow/models/tree/master/research/object_detection
