@@ -51,6 +51,4 @@ RUN mkdir models && \
     tar xzf ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz && \
     rm ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03.tar.gz
 
-ENTRYPOINT ["python"]
-
-CMD ["main.py"]
+CMD ["python", "main.py"]
