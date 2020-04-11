@@ -7,8 +7,8 @@ import argparse
 from utilities import load_model, load_label_map, show_inference, parse_output_dict
 from custom_np_encoder import NumpyArrayEncoder
 
-DEFAULT_PORT = 8004
-DEFAULT_HOST = '127.0.0.1'
+DEFAULT_PORT = 5000
+DEFAULT_HOST = '0.0.0.0'
 
 model_path = "models/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03/saved_model"
 labels_path = "data/mscoco_label_map.pbtxt"
