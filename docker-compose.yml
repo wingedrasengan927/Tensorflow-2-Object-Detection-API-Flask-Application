@@ -1,7 +1,0 @@
-version: "3.7"
-
-services: 
-    tensorflow-2-object-detection-api:
-        build: ./
-        ports: 
-            - 5000:5000
