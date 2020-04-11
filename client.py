@@ -23,11 +23,15 @@ def parse_response(response):
     return json.loads(response.text)
 
 def write_image(save_dir, parsed_response):
+    print("the image is being written in {}".format(save_dir))
     img_array = np.asarray(parsed_response["image data"])
     cv2.imwrite(save_dir + "server_output.jpg", img_array)
     return img_array
 
 response = post_image(img_path, url)
 parsed_response = parse_response(response)
-print(parsed_response.keys())
+
+print("detections are: ", parsed_response["detections"])
+print("the image size is: ", parsed_response["image size"])
+
 write_image(save_dir, parsed_response)
