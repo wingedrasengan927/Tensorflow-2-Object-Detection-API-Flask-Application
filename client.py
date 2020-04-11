@@ -3,7 +3,7 @@ import requests
 import json
 import cv2
 
-address = 'http://localhost:8004'
+address = 'http://localhost:5000'
 url = address + '/object_detection'
 img_path = 'images/girl_image.jpg'
 save_dir = "outputs/"
