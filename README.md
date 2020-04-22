@@ -18,6 +18,9 @@ The response consists of
 
 ![](https://github.com/wingedrasengan927/Tensorflow-2-Object-Detection-API-Flask-Application/blob/master/outputs/girl_image_output.jpg)
 
+## Associated Article
+https://medium.com/@ms.neerajkrishna/deploy-tensorflow-object-detection-api-on-kubernetes-with-python-flask-and-docker-7a9513dd19e4
+
 ## References
 * https://github.com/tensorflow/models/tree/master/research/object_detection
 * https://gist.github.com/kylehounslow/767fb72fde2ebdd010a0bf4242371594
