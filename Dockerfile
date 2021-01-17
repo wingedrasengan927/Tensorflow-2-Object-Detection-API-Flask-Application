@@ -3,6 +3,7 @@ FROM python:3.7
 # install build utilities
 RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils && \
+    apt-get install -y libgl1-mesa-glx && \
     apt-get -y upgrade
 
 # clone the repository 
@@ -19,6 +20,7 @@ RUN apt-get install -y protobuf-compiler python-pil python-lxml python-tk && \
     pip install flask && \
     pip install tensorflow && \
     pip install Pillow && \
+    pip install tf_slim && \
     pip install requests
 
 # Get protoc 3.0.0, rather than the old version already in the container
